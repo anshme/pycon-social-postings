@@ -1,5 +1,5 @@
-import re
 from playwright.sync_api import Playwright, sync_playwright, expect
+import cleanup
 from content_details import POST_DETAILS
 import time
 
@@ -64,7 +64,8 @@ def run(playwright: Playwright) -> None:
             page.wait_for_timeout(1000)
     except KeyboardInterrupt:
         print("\n🛑 Exiting... Closing browser.")
-        context.close()
+    finally:
+        cleanup()
 
 with sync_playwright() as playwright:
     run(playwright)

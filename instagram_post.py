@@ -1,8 +1,8 @@
 import re
 from playwright.sync_api import Playwright, sync_playwright, expect
+from cleanup import cleanup
 from content_details import POST_DETAILS
 import time
-import random
 
 def take_debug_screenshot(page, photo_box, filename="debug_screenshot.png"):
     """
@@ -193,8 +193,8 @@ def run(playwright: Playwright) -> None:
     except KeyboardInterrupt:
         print("\n🛑 Exiting... Closing browser.")
         context.close()
-
-
+    finally:
+        cleanup()
 
 with sync_playwright() as playwright:
     run(playwright)

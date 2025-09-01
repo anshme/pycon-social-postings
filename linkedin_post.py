@@ -1,9 +1,7 @@
-import re
 import time
 from playwright.sync_api import Playwright, sync_playwright, expect
+import cleanup
 from content_details import POST_DETAILS
-
-
 
 def run(playwright: Playwright) -> None:
     content = POST_DETAILS['linkedin_content']
@@ -79,13 +77,14 @@ def run(playwright: Playwright) -> None:
     page.get_by_role("textbox", name="Text editor for creating").click()
     page.get_by_role("textbox", name="Text editor for creating").fill(content)
     print("Browser will wait to you to verify and post")
-    print("Please press ctrl+c to close the browser, press ctrl+c to exit from the script")
+    print("Please press ctrl+c to close the browser")
     try:
         while True:
             page.wait_for_timeout(1000)
     except KeyboardInterrupt:
         print("\n🛑 Exiting... Closing browser.")
-        context.close()
+    finally:
+        cleanup()
 
 with sync_playwright() as playwright:
     run(playwright)
