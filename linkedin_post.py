@@ -56,7 +56,7 @@ def run(playwright: Playwright) -> None:
     for tag in tags:
         print(f"Tagging {tag}...")
         page.get_by_role("combobox", name="Type a name or names").fill(tag)
-        page.wait_for_timeout(1000)
+        page.wait_for_timeout(3000)
         page.get_by_role("combobox", name="Type a name or names").press("ArrowDown")
         page.get_by_role("combobox", name="Type a name or names").press("Enter")
 

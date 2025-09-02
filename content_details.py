@@ -1,24 +1,26 @@
-linkedin_content = """Save the date and the session! 📌 
-Ajinkya P. Dahale talks “Reviving, Modernizing, and Packaging Unmaintained Code” at #PyConIndia2025.
+linkedin_content = """Great ideas grow stronger when passionate people unite.🐍
+
+Experience that synergy at #PyConIndia2025 with Shreya Kommuri & Siddhi Kommuri on “Engineering Custom Diffusion Workflows with ComfyUI: A Developer's Guide”.
 
 See the full conference schedule: https://in.pycon.org/2025/program/schedule/
 
 #Python #PythonCommunity #TechTalk
 """
-x_content = """Save the date and the session! 📌 
-Ajinkya P. Dahale talks “Reviving, Modernizing, and Packaging Unmaintained Code” at #PyConIndia2025.
+x_content = """Great ideas grow stronger when passionate people unite.🐍
+
+Experience that synergy at #PyConIndia2025 with Shreya Kommuri & Siddhi Kommuri on “Engineering Custom Diffusion Workflows with ComfyUI: A Developer's Guide”.
 
 See the full conference schedule: https://in.pycon.org/2025/program/schedule/
 
 #Python #PythonCommunity #TechTalk"""
 
-poster_path = """./files_to_upload/Ajinkya P. Dahale.png"""
-alt_text = """Ajinkya P. Dahale will be talking on “Reviving, Modernizing, and Packaging Unmaintained Code” at PyConIndia2025"""
+poster_path = """./files_to_upload/shreya.png"""
+alt_text = """Shreya Kommuri & Siddhi Kommuri will talk about “Engineering Custom Diffusion Workflows with ComfyUI: A Developer's Guide” at PyConIndia2025"""
 
 
 ############################ Don't change these unless necessory
 linkedin_tags = ["Hyderabad Python", "bangpypers", "pydelhi", "chennaipy", "pythonpune", "mumpy"]
-x_tags = ["hydpy", "bangpypers", "pydelhi", "chennaipy", "pythonpune", "mumpy", "pyladies", "pyladieschennai", "pyladiesblr"]
+x_tags = ["hydpy", "bangpypers", "pydelhi", "chennaipy", "pythonpune", "mumbaipy", "pyladies", "pyladieschennai", "pyladiesblr"]
 insta_tags = ["mumbaipy", "bangpypers", "pydelhi", "hydpython", "pyladiesindia", "pyladies_chennai"]
 
 POST_DETAILS = {
