@@ -94,13 +94,13 @@ def tag_people_with_mouse_and_click(page, tags, wait_ms):
             # Click to start tagging
             print(f"Clicking at ({click_x}, {click_y}) to tag {tag}")
             page.mouse.click(click_x, click_y)
-            time.sleep(wait_ms)
+            time.sleep(wait_ms/2000)
 
             try:
                 textbox = page.get_by_role("textbox", name="clear")
                 textbox.wait_for(state="visible", timeout=5000)
                 textbox.fill(tag)
-                time.sleep(wait_ms/2)
+                time.sleep(wait_ms/3000)
             except Exception as e:
                 print(f"❌ Could not fill textbox for {tag}: {e}")
                 continue
@@ -121,7 +121,7 @@ def tag_people_with_mouse_and_click(page, tags, wait_ms):
                     strategy()
                     print(f"✅ Successfully tagged {tag} (strategy {i+1})")
                     profile_selected = True
-                    time.sleep(wait_ms/5)
+                    time.sleep(wait_ms/3000)
                     break
                 except Exception as e:
                     if i == len(profile_strategies) - 1:  # Last strategy
@@ -165,14 +165,14 @@ def run(playwright: Playwright) -> None:
     page.get_by_role("link", name="Post Post").click()
 
     page.set_input_files("input[type='file']", file_path)
-    time.sleep(wait_ms)
+    time.sleep(wait_ms/1000)
     print("Media Added")
 
     print("pressing next twice")
     page.get_by_role("button", name="Next").click()
-    time.sleep(wait_ms/3)
+    time.sleep(wait_ms/3000)
     page.get_by_role("button", name="Next").click()
-    time.sleep(wait_ms/3)
+    time.sleep(wait_ms/3000)
 
     print("Adding alt text and content")
     page.get_by_role("button", name="Accessibility Down chevron").click()

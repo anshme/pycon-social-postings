@@ -34,7 +34,7 @@ def run(playwright: Playwright) -> None:
     page.set_input_files("input[type='file']", file_path)
     
     #Wait for file to upload
-    time.sleep(wait_ms*2)
+    time.sleep(wait_ms/1000)
     print("Added media")
     
     print("Tagging accounts")

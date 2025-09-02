@@ -48,7 +48,7 @@ def run(playwright: Playwright) -> None:
     page.set_input_files("input[type='file']", file_path)
     
     #Wait for file to upload
-    time.sleep(wait_ms*2)
+    time.sleep(wait_ms/2000)
     print("Media Added")
     # Wait for the 'Tag' button to be visible and then click it.
     # This ensures the file upload is complete before proceeding.
