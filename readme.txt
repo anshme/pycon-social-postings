@@ -1,4 +1,4 @@
-##########################ONE TIME ACTIVITY
+##########################  ONE TIME ACTIVITY
 ##create a virtual env
 python -m venv social_posts
 
@@ -15,9 +15,9 @@ playwright install chromium
 - run the code -> python save_cookie_and_session.py
 - This would open your browswer, login to the platform, wait for it to close automatically
 - Repeat the above steps for all the platforms
-############################DON'T RUN ABOVE COMMANDS AGAIN
+############################   DON'T RUN ABOVE COMMANDS AGAIN
 
-############################HOW TO POST
+############################   HOW TO POST
 Initailize your env
 ## activate the venv
 windows -> .\social_posts\Scripts\activate
