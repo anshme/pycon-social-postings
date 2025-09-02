@@ -10,11 +10,12 @@ ubuntu/mac -> source social_posts/bin/activate
 pip install playwright
 playwright install chromium
 
-##Save the login creds, to be run only once.
-- uncommnet the login platform that you want to use.
-- run the code -> python save_cookie_and_session.py
-- This would open your browswer, login to the platform, wait for it to close automatically
-- Repeat the above steps for all the platforms
+##Save the login creds, to be run only once. 
+- run the code -> python save_cookie_and_session.py. Follow the steps
+- NOTE - don't close the browswer manually, let it automatically close
+- Once you select an option, it would open the browswer with selected social media
+- Enter the username/id and the password manually and wait for it to login. Let the browswer close.
+- Repeat for all the socials that you want to post for.
 ############################   DON'T RUN ABOVE COMMANDS AGAIN
 
 ############################   HOW TO POST
@@ -32,12 +33,13 @@ ubuntu/mac -> source social_posts/bin/activate
 
 IMPORTANT NOTES: 
 1. Each post will open a browswer. You would need to close the browswer by pressing ctrl+c on the console.
-2. Linkedin and twitter will open photo upload window. Don't select any file, just close that window. Mentioned file will automatically get uploaded.
-
-    
-
+2. Linkedin and twitter will open photo upload window. Don't select any file, and simple close that window. Files mentioned in the config will automatically get uploaded.
+3. LinkedIn asserts the admin page by checking linkedin_admin_url in the config. It might differ for user to user, configure it for your profile.
 
 
+#TODO
+1. Smooth termination of program.
+2. configure timeouts for each platform, so that netword latency is taken care of
 
 ## mosuse tracker to navigate.
 playwright codegen https://www.linkedin.com/feed/ --target python -o linkedin_post_play.py --user-data-dir=./user_data/linkedin

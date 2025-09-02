@@ -53,6 +53,27 @@ def login_instagram():
         print("Session saved! Next time you won't need to log in.")
         browser.close()
 
-# login_x()
-# login_linkedin()
-# login_instagram()
+def main_menu():
+    while True:
+        print("\n--- Social Media Login Saver ---")
+        print("1. Log in to X (formerly Twitter)")
+        print("2. Log in to LinkedIn")
+        print("3. Log in to Instagram")
+        print("4. Exit")
+        
+        choice = input("Enter your choice (1-4): ")
+        
+        if choice == '1':
+            login_x()
+        elif choice == '2':
+            login_linkedin()
+        elif choice == '3':
+            login_instagram()
+        elif choice == '4':
+            print("Exiting...")
+            break
+        else:
+            print("Invalid choice. Please enter a number from 1 to 4.")
+
+if __name__ == "__main__":
+    main_menu()

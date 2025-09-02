@@ -23,6 +23,7 @@ linkedin_tags = ["Hyderabad Python", "bangpypers", "pydelhi", "chennaipy", "pyth
 x_tags = ["hydpy", "bangpypers", "pydelhi", "chennaipy", "pythonpune", "mumbaipy", "pyladies", "pyladieschennai", "pyladiesblr"]
 insta_tags = ["mumbaipy", "bangpypers", "pydelhi", "hydpython", "pyladiesindia", "pyladies_chennai"]
 
+linkedin_admin_url = "https://www.linkedin.com/company/14626244/admin/dashboard/*"
 POST_DETAILS = {
     "linkedin_content": linkedin_content,
     "x_content": x_content,
@@ -30,5 +31,6 @@ POST_DETAILS = {
     "x_tags": x_tags,
     "insta_tags": insta_tags,
     "alt_text": alt_text,
-    "file_path": poster_path
+    "file_path": poster_path,
+    "linkedin_admin_url": linkedin_admin_url
 }

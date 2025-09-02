@@ -8,6 +8,7 @@ def run(playwright: Playwright) -> None:
     tags = sorted(POST_DETAILS['linkedin_tags'])
     alt_text = POST_DETAILS['alt_text']
     file_path = POST_DETAILS['file_path']
+    linkedin_admin_url = POST_DETAILS['linkedin_admin_url']
 
     user_data_dir = "./user_data/linkedin"
 
@@ -31,7 +32,7 @@ def run(playwright: Playwright) -> None:
     #     page.get_by_role("link", name="PyCon India 2025", exact=True).click()
 
     # Ensure we are on the admin dashboard
-    page.wait_for_url("https://www.linkedin.com/company/14626244/admin/dashboard/*")
+    page.wait_for_url(linkedin_admin_url)
 
     print("Page loaded successfully.")
     print("Creating posts")
