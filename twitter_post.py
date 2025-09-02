@@ -8,6 +8,7 @@ def run(playwright: Playwright) -> None:
     tags = sorted(POST_DETAILS['x_tags'])
     alt_text = POST_DETAILS['alt_text']
     file_path = POST_DETAILS['file_path']
+    wait_ms = POST_DETAILS['x_wait_timeout_ms']
 
     user_data_dir = "./user_data/x"
 
@@ -33,7 +34,7 @@ def run(playwright: Playwright) -> None:
     page.set_input_files("input[type='file']", file_path)
     
     #Wait for file to upload
-    time.sleep(5)
+    time.sleep(wait_ms*2)
     print("Added media")
     
     print("Tagging accounts")
@@ -41,7 +42,7 @@ def run(playwright: Playwright) -> None:
     for tag in tags:
         print(f"Tagging {tag}...")
         page.get_by_test_id("searchPeople").fill(tag)
-        page.wait_for_timeout(2500)
+        page.wait_for_timeout(wait_ms)
         page.get_by_test_id("searchPeople").press("ArrowDown")
         page.get_by_test_id("searchPeople").press("Enter")
     page.get_by_role("button", name="Done").click()

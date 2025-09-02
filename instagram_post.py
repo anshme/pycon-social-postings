@@ -36,7 +36,7 @@ def take_debug_screenshot(page, photo_box, filename="debug_screenshot.png"):
     print(f"📷 Debug screenshot saved: {filename}")
 
 
-def tag_people_with_mouse_and_click(page, tags):
+def tag_people_with_mouse_and_click(page, tags, wait_ms):
     """
     Enhanced tagging function with fallback strategies
     """
@@ -94,13 +94,13 @@ def tag_people_with_mouse_and_click(page, tags):
             # Click to start tagging
             print(f"Clicking at ({click_x}, {click_y}) to tag {tag}")
             page.mouse.click(click_x, click_y)
-            time.sleep(3)
+            time.sleep(wait_ms)
 
             try:
                 textbox = page.get_by_role("textbox", name="clear")
                 textbox.wait_for(state="visible", timeout=5000)
                 textbox.fill(tag)
-                time.sleep(1.5)
+                time.sleep(wait_ms/2)
             except Exception as e:
                 print(f"❌ Could not fill textbox for {tag}: {e}")
                 continue
@@ -121,7 +121,7 @@ def tag_people_with_mouse_and_click(page, tags):
                     strategy()
                     print(f"✅ Successfully tagged {tag} (strategy {i+1})")
                     profile_selected = True
-                    time.sleep(1)
+                    time.sleep(wait_ms/5)
                     break
                 except Exception as e:
                     if i == len(profile_strategies) - 1:  # Last strategy
@@ -141,6 +141,7 @@ def run(playwright: Playwright) -> None:
     tags = sorted(POST_DETAILS['insta_tags'])
     alt_text = POST_DETAILS['alt_text']
     file_path = POST_DETAILS['file_path']
+    wait_ms = POST_DETAILS['insta_wait_timeout_ms']
 
     user_data_dir = "./user_data/instagram"
 
@@ -163,16 +164,15 @@ def run(playwright: Playwright) -> None:
     page.get_by_role("link", name="New post Create").click()
     page.get_by_role("link", name="Post Post").click()
 
-    print("Adding media, you need to close the input window manually")
     page.set_input_files("input[type='file']", file_path)
-    time.sleep(2)
+    time.sleep(wait_ms)
     print("Media Added")
 
     print("pressing next twice")
     page.get_by_role("button", name="Next").click()
-    time.sleep(2)
+    time.sleep(wait_ms/3)
     page.get_by_role("button", name="Next").click()
-    time.sleep(2)
+    time.sleep(wait_ms/3)
 
     print("Adding alt text and content")
     page.get_by_role("button", name="Accessibility Down chevron").click()
@@ -182,7 +182,7 @@ def run(playwright: Playwright) -> None:
     page.get_by_role("textbox", name="Write a caption...").fill(content)
     print("Content added")
 
-    tag_people_with_mouse_and_click(page, tags)
+    tag_people_with_mouse_and_click(page, tags, wait_ms)
 
     print("Browser will wait to you to verify and post")
     print("Please press ctrl+c to close the browser, press ctrl+c to exit from the script")

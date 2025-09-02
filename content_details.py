@@ -32,5 +32,8 @@ POST_DETAILS = {
     "insta_tags": insta_tags,
     "alt_text": alt_text,
     "file_path": poster_path,
-    "linkedin_admin_url": linkedin_admin_url
+    "linkedin_admin_url": linkedin_admin_url,
+    "linkedin_wait_timeout_ms": 3000,
+    "x_wait_timeout_ms": 3000,
+    "insta_wait_timeout_ms": 3000
 }

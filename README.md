@@ -68,6 +68,12 @@ After the initial setup, follow these steps to post new content.
 
 ---
 
+
+## TODO
+
+* Instagram tagging, find the picture tag and make the bounding box bigger. Currently it takes the center and of the page and assumes that it has landed on the picture, which is correct when posting from high res, full screen browswer.
+
+
 ## 🖱️ Mouse Tracker
 
 Use the `playwright codegen` command to track mouse actions and generate code for navigation. This is helpful for creating scripts that interact with web pages.

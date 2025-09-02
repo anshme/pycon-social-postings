@@ -9,6 +9,7 @@ def run(playwright: Playwright) -> None:
     alt_text = POST_DETAILS['alt_text']
     file_path = POST_DETAILS['file_path']
     linkedin_admin_url = POST_DETAILS['linkedin_admin_url']
+    wait_ms = POST_DETAILS['linkedin_wait_timeout_ms']
 
     user_data_dir = "./user_data/linkedin"
 
@@ -47,7 +48,7 @@ def run(playwright: Playwright) -> None:
     page.set_input_files("input[type='file']", file_path)
     
     #Wait for file to upload
-    time.sleep(5)
+    time.sleep(wait_ms*2)
     print("Media Added")
     # Wait for the 'Tag' button to be visible and then click it.
     # This ensures the file upload is complete before proceeding.
@@ -57,11 +58,11 @@ def run(playwright: Playwright) -> None:
     for tag in tags:
         print(f"Tagging {tag}...")
         page.get_by_role("combobox", name="Type a name or names").fill(tag)
-        page.wait_for_timeout(3000)
+        page.wait_for_timeout(wait_ms)
         page.get_by_role("combobox", name="Type a name or names").press("ArrowDown")
         page.get_by_role("combobox", name="Type a name or names").press("Enter")
 
-    page.wait_for_timeout(1000)
+    page.wait_for_timeout(wait_ms)
     page.get_by_role("button", name="Add").click()
     print("Tags completed")
 
@@ -70,7 +71,7 @@ def run(playwright: Playwright) -> None:
     page.get_by_role("textbox", name="Alt text*").click()
     page.get_by_role("textbox", name="Alt text*").fill(alt_text)
     page.get_by_role("button", name="Add").click()
-    page.wait_for_timeout(1000)
+    page.wait_for_timeout(wait_ms/3)
     print("Alt text added")
     
     print("Adding content")
