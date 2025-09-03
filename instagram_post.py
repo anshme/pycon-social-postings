@@ -46,15 +46,15 @@ def tag_people_with_mouse_and_click(page, tags, wait_ms):
         viewport_size = page.viewport_size
         if viewport_size:
             print("Taking viewpoint size")
-            center_x = (viewport_size['width'] // 2) - 100
-            center_y = (viewport_size['height'] // 2) + 20
+            center_x = (viewport_size['width'] // 2)
+            center_y = (viewport_size['height'] // 2)
             
             # Create a bounding box representing the center area
             photo_box = {
-                'x': center_x - 100,  # Adjust offset as needed
-                'y': center_y - 50,  # Adjust offset as needed
-                'width': 100,        # Adjust size as needed
-                'height': 100        # Adjust size as needed
+                'x': center_x - 350,  # Adjust offset as needed
+                'y': center_y - 100,  # Adjust offset as needed
+                'width': 350,        # Adjust size as needed
+                'height': 350        # Adjust size as needed
             }
             
             print(f"✅ Using page center coordinates")
@@ -74,6 +74,8 @@ def tag_people_with_mouse_and_click(page, tags, wait_ms):
             }
 
         num_tags = len(tags)
+
+        take_debug_screenshot(page, photo_box, "debug_screenshot.png")
 
         # Now proceed with tagging using the photo_box
         for i, tag in enumerate(tags):
@@ -196,5 +198,8 @@ def run(playwright: Playwright) -> None:
     finally:
         cleanup()
 
-with sync_playwright() as playwright:
-    run(playwright)
+try:
+    with sync_playwright() as playwright:
+        run(playwright)
+except Exception as e:
+    print(f"Ending the program")
