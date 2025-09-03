@@ -198,5 +198,8 @@ def run(playwright: Playwright) -> None:
     finally:
         cleanup()
 
-with sync_playwright() as playwright:
-    run(playwright)
+try:
+    with sync_playwright() as playwright:
+        run(playwright)
+except Exception as e:
+    print(f"Ending the program")
